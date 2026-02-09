@@ -4,7 +4,7 @@
 { pkgs ? import <nixpkgs> {} }:
         
         pkgs.mkShell {
-        name = "javaShell";
+        name = "CShell";
         buildInputs = with pkgs; [
             gcc
             gnumake
