@@ -12,9 +12,6 @@
             {
                 devShells.java = pkgs.callPackage ./java/default.nix {};
                 devShells.C = pkgs.callPackage ./C/default.nix {};
-                templates.C = {
-                path = ./C;
-                };
             }
         );
 }
