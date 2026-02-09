@@ -9,6 +9,7 @@
             gcc
             gnumake
             clang-tools
+            valgrind
         ];
         
         shellHook = ''       
