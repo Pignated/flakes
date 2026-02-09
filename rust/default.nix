@@ -13,6 +13,7 @@
             cargo
             rustfmt
             rust-analyzer
+            clippy
         ];
         
         shellHook = ''       
