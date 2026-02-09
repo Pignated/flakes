@@ -10,6 +10,7 @@
             gnumake
             clang-tools
             valgrind
+            gdb
         ];
         
         shellHook = ''       
