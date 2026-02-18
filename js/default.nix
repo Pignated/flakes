@@ -6,7 +6,7 @@
         pkgs.mkShell {
         name = "jsshell";
         buildInputs = with pkgs; [
-            npm
+            nodejs
         ];
         
         shellHook = ''       
