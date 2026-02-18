@@ -4,7 +4,7 @@
 { pkgs ? import <nixpkgs> {} }:
         
         pkgs.mkShell {
-        name = "JSShell";
+        name = "jsshell";
         buildInputs = with pkgs; [
             npm
         ];
