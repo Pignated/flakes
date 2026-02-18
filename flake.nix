@@ -13,6 +13,7 @@
                 devShells.java = pkgs.callPackage ./java/default.nix {};
                 devShells.C = pkgs.callPackage ./C/default.nix {};
                 devShells.rust = pkgs.callPackage ./rust/default.nix {};
+                devShells.js = pkgs.callPackage ./js/default.nix {};
             }
         );
 }
