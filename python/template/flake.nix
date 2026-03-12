@@ -14,7 +14,6 @@
         pythonBase= pkgs.callPackage "${monorepo}/python/default.nix" {};
         pythonEnv = pkgs.python3.withPackages (ps: with ps;
             (pythonBase.packages ps) ++ [
-                        requests
                     #add additional packages here
             ]
         );
