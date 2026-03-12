@@ -8,6 +8,7 @@
     jupyterlab
     scipy
     scikit-learn
+    nbdime
   ];
 
   # The environment variables (THIS WAS LIKELY MISSING)
@@ -20,12 +21,13 @@
         jupyterlab 
         scipy 
         scikit-learn
+        nbdime
       ])) 
     ];
-    shellHook = "export USING_PYTHON=1";
+    shellHook = "export USING_PYTHON=1;nbdime config-git --enable --global";
   };
 
   env = { USING_PYTHON = "1"; };
-  shellHook = "echo 'Python base environment loaded!'";
+  shellHook = "nbdime config-git --enable --global";
 }
 

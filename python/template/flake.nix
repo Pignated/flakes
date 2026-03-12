@@ -22,6 +22,7 @@
         devShells.default = pkgs.mkShell {
             inherit (pythonBase) env;
             packages = [pythonEnv];
+            shellHook = pythonBase.shellHook;
         };
       });
 }
