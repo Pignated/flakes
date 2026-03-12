@@ -12,15 +12,16 @@
       let
         pkgs = import nixpkgs { inherit system; };
         # This imports the default.nix that is already in this folder
-        pythonShell = monorepo.devShells.x86_64-linux.python;
-        pythonExtras = pkgs.python3.withPackages (ps: with ps; [
+        baseShell = monorepo.devShells.x86_64-linux.python;
+        pythonShell = pkgs.python3.withPackages (ps: with ps; [
             #add additional packages here
+            (import (monorepo + "/python/default.nix") { inherit pkgs; }).buildInputs
         ]);
       in
       {
         devShells.default = pkgs.mkShell {
-            inputsFrom = [pythonShell];
-            buildInputs = [pythonExtras];
+            inputsFrom = [baseShell];
+            packages = [pythonShell];
         };
       });
 }
