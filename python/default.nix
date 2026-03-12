@@ -10,8 +10,10 @@
   ];
 
   # The shared environment variables
-  env = {
-    USING_PYTHON = "1";
+  shell = pkgs.mkShell {
+    packages = [ (pkgs.python3.withPackages (ps: [ 
+      numpy matplotlib pandas jupyterlab scipy scikit-learn
+    ])) ];
+    shellHook = "export USING_PYTHON=1";
   };
-
 }  
