@@ -21,7 +21,7 @@
         {
             templates = {
                 python = {
-                    path = ./python;
+                    path = ./python/flake.nix;
                     description = "Python dev template";
                 };
             };
