@@ -21,7 +21,7 @@
         {
             templates = {
                 python = {
-                    path = ./python/template;
+                    path = ./python;
                     description = "Python dev template";
                 };
             };
