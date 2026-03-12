@@ -8,7 +8,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      myPackage = pkgs.callPackage "repo/js/default.nix" { };
+      myPackage = pkgs.callPackage (my-repo + "/js/default.nix") { };
     in
     {
       packages.x86_64-linux.default = myPackage;

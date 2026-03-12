@@ -51,7 +51,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
-      myPackage = pkgs.callPackage "''${my-repo}/$lang/default.nix" { };
+      myPackage = pkgs.callPackage (my-repo + "/$lang/default.nix") { };
     in
     {
       packages.x86_64-linux.default = myPackage;
