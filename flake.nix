@@ -5,7 +5,7 @@
         flake-utils.url = "github:numtide/flake-utils";
     };
     outputs = { self, nixpkgs, flake-utils, ...}:
-        flake-utils.lib.eachDefaultSystem (system: 
+        (flake-utils.lib.eachDefaultSystem (system: 
             let
                 pkgs = nixpkgs.legacyPackages.${system};
             in
@@ -14,6 +14,16 @@
                 devShells.C = pkgs.callPackage ./C/default.nix {};
                 devShells.rust = pkgs.callPackage ./rust/default.nix {};
                 devShells.js = pkgs.callPackage ./js/default.nix {};
+                devShells.python = pkgs.callPackage ./python/default.nix{};
             }
-        );
+        ))
+        //
+        {
+            templates = {
+                python = {
+                    path = ./python/template;
+                    description = "Python dev template";
+                };
+            };
+        };
 }
