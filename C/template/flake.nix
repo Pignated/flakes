@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    my-repo.url = "github:youruser/yourrepo";
+    my-repo.url = "github:pignated/flakes";
   };
 
   outputs = { self, nixpkgs, my-repo }:
