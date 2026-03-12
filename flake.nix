@@ -26,11 +26,10 @@
             {
                 templates = allTemplates;
                 devShells.x86_64-linux = {
-                devShells.java = pkgs.callPackage ./java/default.nix {};
-                devShells.C = pkgs.callPackage ./C/default.nix {};
-                devShells.rust = pkgs.callPackage ./rust/default.nix {};
-                devShells.js = pkgs.callPackage ./js/default.nix {};
-                devShells.python = pkgs.callPackage ./python/default.nix{};
+                java = pkgs.callPackage ./java/default.nix {};
+                C = pkgs.callPackage ./C/default.nix {};
+                rust = pkgs.callPackage ./rust/default.nix {};
+                js = pkgs.callPackage ./js/default.nix {};
             };
     
     apps.x86_64-linux.generate = {
