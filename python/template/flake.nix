@@ -21,6 +21,6 @@
         devShells.default = pkgs.mkShell {
             inputsFrom = [pythonShell];
             buildInputs = [pythonExtras];
-                }
+        };
       });
 }
