@@ -10,18 +10,19 @@
   outputs = { self, nixpkgs, flake-utils, monorepo }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; };
-        # This imports the default.nix that is already in this folder
-        baseShell = monorepo.devShells.x86_64-linux.python;
-        pythonShell = pkgs.python3.withPackages (ps: with ps; [
-            #add additional packages here
-            (import (monorepo + "/python/default.nix") { inherit pkgs; }).buildInputs
-        ]);
+          system = "x86_64-linux"; # Adjust to your system
+      pkgs = nixpkgs.legacyPackages.${system};            
+        pythonBase= pkgs.callPackage "${monorepo}/python/default.nix" {};
+        pythonEnv = pkgs.python3.withPackages (ps: with ps;
+            (pythonBase.packages ps) ++ [
+                    #add additional packages here
+            ]
+        );
       in
       {
         devShells.default = pkgs.mkShell {
-            inputsFrom = [baseShell];
-            packages = [pythonShell];
+            inherit (pythonBase) env;
+            packages = [pythonEnv];
         };
       });
 }
