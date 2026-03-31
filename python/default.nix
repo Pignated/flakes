@@ -10,7 +10,8 @@
     scikit-learn
     nbdime
     python-lsp-server
-    pyls-pylint
+    pyls-flake8
+    flake8
   ];
 
   # The environment variables (THIS WAS LIKELY MISSING)
@@ -25,7 +26,8 @@
         scikit-learn
         nbdime
         python-lsp-server
-        pyls-pylint
+        pyls-flake8
+        flake8
       ])) 
     ];
     shellHook = "export USING_PYTHON=1;nbdime config-git --enable --global";
