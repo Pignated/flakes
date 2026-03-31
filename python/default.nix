@@ -12,6 +12,8 @@
     python-lsp-server
     pyls-flake8
     flake8
+    black
+    python-lsp-black
   ];
 
   # The environment variables (THIS WAS LIKELY MISSING)
@@ -28,6 +30,9 @@
         python-lsp-server
         pyls-flake8
         flake8
+                  black
+                  py-lsp-black
+                  
       ])) 
     ];
     shellHook = "export USING_PYTHON=1;nbdime config-git --enable --global";
