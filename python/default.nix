@@ -1,7 +1,9 @@
   # github:pignated/flakes/python/default.nix
 { pkgs }: {
   # The list of packages as a function of 'ps'
-  packages = ps: with ps; [
+  packages =[
+          pkgs.basedpyright
+          (pkgs.python3.withPackages ( ps: with ps; [
     numpy
     matplotlib
     pandas
@@ -14,6 +16,7 @@
     flake8
     black
     python-lsp-black
+      ]))
   ];
 
   # The environment variables (THIS WAS LIKELY MISSING)

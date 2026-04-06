@@ -12,11 +12,13 @@
       let
   pkgs = import nixpkgs { inherit system; };
         pythonBase= pkgs.callPackage "${monorepo}/python/default.nix" {};
-        pythonEnv = pkgs.python3.withPackages (ps: with ps;
+        pythonEnv = [
+                    pkgs.basedpyright
+                    (pkgs.python3.withPackages (ps: with ps;
             (pythonBase.packages ps) ++ [
                     #add additional packages here
-            ]
-        );
+            ]))
+        ];
       in
       {
         devShells.default = pkgs.mkShell {
