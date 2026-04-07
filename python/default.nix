@@ -1,8 +1,6 @@
   # github:pignated/flakes/python/default.nix
 { pkgs }: {
-  # The list of packages as a function of 'ps'
   packages =[
-          pkgs.basedpyright
           (pkgs.python3.withPackages ( ps: with ps; [
     numpy
     matplotlib
@@ -19,7 +17,6 @@
       ]))
   ];
 
-  # The environment variables (THIS WAS LIKELY MISSING)
   shell = pkgs.mkShell {
     packages = [ 
       (pkgs.python3.withPackages (ps: with ps; [ # Added 'with ps;' here
