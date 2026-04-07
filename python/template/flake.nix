@@ -18,10 +18,10 @@
         
         # Build the environment by calling the library function from the monorepo
         pythonEnv = pkgs.python3.withPackages (ps: 
-          (pythonBase.pythonLibraries ps) ++ [
+          (pythonBase.pythonLibraries ps) ++ (with ps;[
             # ps.requests  <-- Add extra libs here
           ]
-        );
+        ));
       in
       {
         devShells.default = pkgs.mkShell {
