@@ -14,15 +14,17 @@
         pythonBase= pkgs.callPackage "${monorepo}/python/default.nix" {};
         pythonEnv = 
                     (pkgs.python3.withPackages (ps: with ps;
-            (pythonBase.packages ps) ++ [
+            pythonBase.packages ++ [
                     #add additional packages here
             ]));
       in
       {
         devShells.default = pkgs.mkShell {
             inherit (pythonBase) env;
-            packages = [pythonEnv
-                        pkgs.basedpyright];
+            packages = [
+                        pythonEnv
+                        pkgs.basedpyright
+                    ];
             shellHook = pythonBase.shellHook;
         };
       });
