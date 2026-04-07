@@ -1,7 +1,7 @@
-  # github:pignated/flakes/python/default.nix
-{ pkgs }: {
-  packages =[
-          (pkgs.python3.withPackages ( ps: with ps; [
+{ pkgs }: 
+let
+  # This must be defined as a function taking 'ps'
+  pythonLibraries = ps: with ps; [
     numpy
     matplotlib
     pandas
@@ -14,31 +14,19 @@
     flake8
     black
     python-lsp-black
-      ]))
   ];
-
-  shell = pkgs.mkShell {
-    packages = [ 
-      (pkgs.python3.withPackages (ps: with ps; [ # Added 'with ps;' here
-        numpy 
-        matplotlib 
-        pandas 
-        jupyterlab 
-        scipy 
-        scikit-learn
-        nbdime
-        python-lsp-server
-        pyls-flake8
-        flake8
-                  black
-                  py-lsp-black
-                  
-      ])) 
-    ];
-    shellHook = "export USING_PYTHON=1;nbdime config-git --enable --global";
-  };
+in
+{
+  # THIS LINE IS REQUIRED
+  inherit pythonLibraries;
 
   env = { USING_PYTHON = "1"; };
-  shellHook = "nbdime config-git --enable --global";
+
+  shellHook = ''
+    export USING_PYTHON=1
+    if command -v nbdime >/dev/null; then
+      nbdime config-git --enable --global
+    fi
+  '';
 }
 
