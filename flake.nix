@@ -30,6 +30,14 @@
                 C = pkgs.callPackage ./C/default.nix {};
                 rust = pkgs.callPackage ./rust/default.nix {};
                 js = pkgs.callPackage ./js/default.nix {};
+                base_python = let 
+                    pyConfig = pkgs.callPackage ./python/default.nix {};
+                in pkgs.mkShell {
+                    name = "python-env";
+                    buildInputs = [
+                        (pkgs.python3.withPackages pyConfig.pythonLibraries)
+                    ];
+                };
             };
     
     apps.x86_64-linux.generate = {
