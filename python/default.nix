@@ -13,7 +13,7 @@ let
     pyls-flake8
     flake8
     black
-    python-lsp-black
+    #python-lsp-black
   ];
 in
 {
