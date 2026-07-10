@@ -8,11 +8,11 @@ let
     jupyterlab
     scipy
     scikit-learn
-    #nbdime
-    #python-lsp-server
-    #pyls-flake8
-    #flake8
-    #black
+    nbdime
+    python-lsp-server
+    pyls-flake8
+    flake8
+    black
     #python-lsp-black
   ];
 in
