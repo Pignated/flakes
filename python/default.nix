@@ -9,6 +9,8 @@ let
     scipy
     scikit-learn
     nbdime
+    notebook
+    ipykernel
     python-lsp-server
     pyls-flake8
     flake8
