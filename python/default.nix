@@ -1,28 +1,31 @@
-{ pkgs }: 
+{ pkgs }:
 let
   # This must be defined as a function taking 'ps'
-  pythonLibraries = ps: with ps; [
-    numpy
-    matplotlib
-    pandas
-    jupyterlab
-    scipy
-    scikit-learn
-    nbdime
-    notebook
-    ipykernel
-    python-lsp-server
-    pyls-flake8
-    flake8
-    black
-    #python-lsp-black
-  ];
+  pythonLibraries =
+    ps: with ps; [
+      numpy
+      matplotlib
+      pandas
+      jupyterlab
+      scipy
+      scikit-learn
+      nbdime
+      notebook
+      ipykernel
+      python-lsp-server
+      pyls-flake8
+      flake8
+      black
+      #python-lsp-black
+    ];
 in
 {
   # THIS LINE IS REQUIRED
   inherit pythonLibraries;
 
-  env = { USING_PYTHON = "1"; };
+  env = {
+    USING_PYTHON = "1";
+  };
 
   shellHook = ''
     export USING_PYTHON=1
@@ -31,4 +34,3 @@ in
     fi
   '';
 }
-
