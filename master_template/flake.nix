@@ -6,7 +6,11 @@
     my-repo.url = "github:youruser/yourrepo";
   };
 
-  outputs = { self, nixpkgs, my-repo }:
+  outputs = {
+    self, 
+    nixpkgs, 
+    my-repo 
+  }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.\${system};
