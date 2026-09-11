@@ -2,12 +2,8 @@
 
 
 { pkgs ? import <nixpkgs> {} }:
-    let
-        jdtls-plugin = pkgs.vimPlugins.nvim-jdtls;
-    in
-        
         pkgs.mkShell {
-        name = "javaShell";
+        name = "racketShell";
         buildInputs = with pkgs; [
         racket
         ];

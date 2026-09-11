@@ -6,7 +6,7 @@
     };
     outputs = { self, nixpkgs, flake-utils, ...}:
         let 
-        autogen_template_langs = [ "rust" "C" "java" "js" ];
+        autogen_template_langs = [ "rust" "C" "java" "js" "racket"];
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         mkTemplate = lang : {
             name = lang;
@@ -30,6 +30,7 @@
                 C = pkgs.callPackage ./C/default.nix {};
                 rust = pkgs.callPackage ./rust/default.nix {};
                 js = pkgs.callPackage ./js/default.nix {};
+                racket = pkgs.callPackage ./racket/default.nix {};
                 base_python = let 
                     pyConfig = pkgs.callPackage ./python/default.nix {};
                 in pkgs.mkShell {
@@ -41,6 +42,7 @@
             };
     
     apps.x86_64-linux.generate = {
+        meta = "Generation of templates based on existing packages";
         type = "app";
         program = toString (pkgs.writeShellScript "gen-templates" ''
           for lang in ${builtins.concatStringsSep " " autogen_template_langs}; do
