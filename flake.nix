@@ -75,7 +75,12 @@
                 my-repo.url = "github:pignated/flakes";
               };
 
-              outputs = { self, nixpkgs, my-repo }:
+              outputs =
+                {
+                  self,
+                  nixpkgs,
+                  my-repo,
+                }:
                 let
                   system = "x86_64-linux";
                   pkgs = nixpkgs.legacyPackages.x86_64-linux;
