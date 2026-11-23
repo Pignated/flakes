@@ -9,7 +9,7 @@ pkgs.mkShell {
     typescript-language-server
     typescript
     vscode-langservers-extracted
-
+    emmet-language-server
   ];
 
   shellHook = ''
